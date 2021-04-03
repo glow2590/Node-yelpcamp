@@ -17,7 +17,7 @@ const catchAsync = require('./utilities/catchAsync');
 const { join } = require('path');
 
 const mongoSanitize = require('express-mongo-sanitize');
-const db_url='mongodb://localhost:27017/yelpCamp';
+const db_url=process.env.DB_URL;
 
 
 const userRoutes = require('./routes/users');
