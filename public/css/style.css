@@ -1,0 +1,33 @@
+body {
+    height: 100%;
+    background-color:gainsboro;
+  }
+  
+  main{
+    flex: 1 0 auto;
+  }
+  
+  .carousel-control-prev-icon{
+    text-shadow: chocolate;
+    background-color: chocolate;
+    
+  }
+ 
+  .carousel-control-next-icon{
+    text-shadow: chocolate;
+    background-color: chocolate;
+    
+  }
+  .card-img-top {
+    width: 100%;
+    height: 20vw;
+    object-fit: contain;
+}
+
+ .home{
+   
+
+  background-image: url('https://images.pexels.com/photos/1144176/pexels-photo-1144176.jpeg?crop=entropy&cs=srgb&dl=pexels-sindre-str%C3%B8m-1144176.jpg&fit=crop&fm=jpg&h=718&w=1280');
+  background-size: cover;
+  
+}

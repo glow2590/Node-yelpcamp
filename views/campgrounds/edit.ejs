@@ -1,0 +1,89 @@
+<%layout('layouts/boilerplate') %> 
+<div class="row">
+    <h1 class="text-center">Edit Campground</h1>
+    <div class="col-6 offset-3">
+        <form action="/campground/<%=campground._id%>?_method=PUT" method="POST" class="validated-form" novalidate enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label text-muted" for="title">Campground Title:</label>
+                <input class="form-control" type="text" name="campground[title]" id="title" value="<%=campground.title%>" required>
+                <div class="valid-feedback">
+                    <strong>Looks Good!!</strong>
+                </div>    
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-muted" for="location">Location:</label>
+                <input class="form-control" type="text" name="campground[location]" id="location" value="<%=campground.location%>" required>
+                <div class="valid-feedback">
+                    <strong>Looks Good!!</strong>
+                </div>
+            </div>
+            <div class="mb-3">
+           
+            <label class="form-label text-muted custom-file-label " for="image">Add images:</label>
+            <input class="form-control custom-file-input" type="file" name="image" id="image" value="<%=campground.image%>" multiple >
+            <div class="valid-feedback">
+                <strong>Looks Good!!</strong>
+            </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-muted" for="location">Delete:</label>
+<br>
+                    <% campground.images.forEach((img,i)=>{ %>
+                
+                        <a href="<%=img.url%>"><img class="img-thumbnail" src="<%=img.thumbnail%>" alt="<%= campground.title %> "></a>
+                        <div class="form-check-inline">
+                            <input class="check"type="checkbox" name="deletedImages[]" id="image-<%=i%>"data-toggle="tooltip" data-html="true" title="check to delete" value="<%=img.filename%>">
+                        </div>
+                    <% }) %> 
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-muted" for="description">Description:</label>
+                <textarea class="form-control" type="text" name="campground[description]" id="description"required ><%=campground.description%></textarea>
+                <div class="valid-feedback">
+                    <strong>Looks Good!!</strong>
+                </div>
+            </div>
+            <div class="mb-3 ">
+                <label class="form-label text-muted"for="price">Price:</label>
+                <div class="input-group ">
+                    <span class="input-group-text">$</span>
+                    <input type="text" id="price" class="form-control" aria-label="price" name="campground[price]" value="<%=campground.price%>" required>
+                    <span class="input-group-text">.00</span>
+                 <div class="valid-feedback">
+                    <strong>Looks Good!!</strong>
+                </div>
+                </div>
+              
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success">Save </button>
+            </div>
+          
+        </form>
+        <a class="text-warning" href="/campground/<%=campground._id%>">Cancel</a>
+    
+    </div>
+</div>
+
+<script>
+      (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.validated-form')
+
+  // Loop over them and prevent submission
+  Array.from(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
+</script>
